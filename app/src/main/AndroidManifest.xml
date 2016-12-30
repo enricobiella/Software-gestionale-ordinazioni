@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.enrico.biella.gestione_ordinazioni">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Camerieri"
+            android:label="@string/title_activity_camerieri"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GestioneComande"
+            android:label="@string/title_activity_gestione_comande"
+            android:parentActivityName=".Camerieri"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.Camerieri" />
+        </activity>
+        <activity
+            android:name=".InserisciTavolo"
+            android:label="@string/title_activity_inserisci_tavolo"
+            android:parentActivityName=".GestioneComande"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.GestioneComande" />
+        </activity>
+        <activity
+            android:name=".InserisciServizi"
+            android:label="@string/title_activity_inserisci_servizi"
+            android:parentActivityName=".InserisciTavolo"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.InserisciTavolo" />
+        </activity>
+        <activity
+            android:name=".ScegliCategoria"
+            android:label="@string/title_activity_scegli_categoria"
+            android:parentActivityName=".InserisciServizi"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.InserisciServizi" />
+        </activity>
+    </application>
+
+</manifest>

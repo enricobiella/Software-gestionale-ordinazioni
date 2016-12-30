@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.enrico.biella.gestione_ordinazioni.ScegliCategoria"
+    tools:showIn="@layout/activity_scegli_categoria"
+    >
+    <TableLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+        <TableRow
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/bevande"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:text="@string/bevande" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/birre"
+                android:layout_column="1"
+                android:layout_span="1"
+                android:text="@string/birre" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/coca_cola"
+                android:layout_column="2"
+                android:layout_span="1"
+                android:text="@string/coca_cola" />
+        </TableRow>
+        <TableRow
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/vini"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:text="@string/vini" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/lattine"
+                android:layout_column="1"
+                android:layout_span="1"
+                android:text="@string/lattine" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/caffe"
+                android:layout_column="2"
+                android:layout_span="1"
+                android:text="@string/caffe" />
+        </TableRow>
+        <TableRow
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/pizze"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:text="@string/pizze" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/carne"
+                android:layout_column="1"
+                android:layout_span="1"
+                android:text="@string/carne" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/pesce"
+                android:layout_column="2"
+                android:layout_span="1"
+                android:text="@string/pesce" />
+        </TableRow>
+        <TableRow
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/primi_piatti"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:text="@string/primi_piatti" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/cucina"
+                android:layout_column="1"
+                android:layout_span="1"
+                android:text="@string/cucina" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/contorni"
+                android:layout_column="2"
+                android:layout_span="1"
+                android:text="@string/contorni" />
+        </TableRow>
+        <TableRow
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/gelati"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:text="@string/gelati" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/dessert"
+                android:layout_column="1"
+                android:layout_span="1"
+                android:text="@string/dessert" />
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/amari_liquori"
+                android:layout_column="2"
+                android:layout_span="1"
+                android:text="@string/amari_liquori" />
+        </TableRow>
+        <TableRow
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_marginBottom="0.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/servizio"
+                android:layout_column="0"
+                android:layout_span="3"
+                android:text="@string/servizio" />
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

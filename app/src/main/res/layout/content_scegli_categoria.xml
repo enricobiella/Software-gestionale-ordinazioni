@@ -174,7 +174,8 @@
                 android:id="@+id/servizio"
                 android:layout_column="0"
                 android:layout_span="3"
-                android:text="@string/servizio" />
+                android:text="@string/servizio"
+                android:onClick="startActivityServizi" />
         </TableRow>
     </TableLayout>
 </RelativeLayout>

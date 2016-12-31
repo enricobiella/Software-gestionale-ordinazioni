@@ -12,4 +12,73 @@
     tools:context="com.enrico.biella.gestione_ordinazioni.InserisciServizi"
     tools:showIn="@layout/activity_inserisci_servizi">
 
+    <TableLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+        <TableRow
+            android:layout_weight="1.25"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/button"
+                android:textSize="50dp"
+                android:backgroundTint="@color/green"
+                android:onClick="clickPlus" />
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="0"
+                android:layout_column="0"
+                android:text="@string/schermo"
+                android:id="@+id/schermo"
+                android:textSize="90sp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textAlignment="center"
+                android:maxLength="13" />
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="-"
+                android:id="@+id/button2"
+                android:textSize="50dp"
+                android:backgroundTint="@color/red"
+                android:onClick="clickMinus" />
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1.25"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
+
 </RelativeLayout>

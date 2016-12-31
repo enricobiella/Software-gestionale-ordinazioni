@@ -53,4 +53,6 @@
     <string name="zero">0</string>
     <string name="canc">CANC</string>
     <string name="numero_tavolo">NUMERO TAVOLO</string>
+    <string name="tavolo">Tavolo:</string>
+    <string name="schermo">0</string>
 </resources>

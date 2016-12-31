@@ -24,11 +24,12 @@
     <include layout="@layout/content_inserisci_tavolo" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/conferma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|left"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:src="@drawable/ic_done_white_24dp"
+        app:backgroundTint="@color/green" />
 
 </android.support.design.widget.CoordinatorLayout>

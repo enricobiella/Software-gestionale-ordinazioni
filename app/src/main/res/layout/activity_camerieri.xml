@@ -21,8 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_camerieri"
-        android:layout_height="330dp" />
+    <include layout="@layout/content_camerieri" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/falso"
@@ -30,13 +29,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_clear_white_24dp" />
+        android:src="@drawable/ic_clear_white_24dp"
+        app:backgroundTint="@color/red" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/vero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_done_white_24dp" />
+        android:src="@drawable/ic_done_white_24dp"
+        app:backgroundTint="@color/green" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -34,4 +34,23 @@
     <string name="title_activity_inserisci_tavolo">InserisciTavolo</string>
     <string name="title_activity_inserisci_servizi">InserisciServizi</string>
     <string name="title_activity_scegli_categoria">ScegliCategoria</string>
+    <string name="lista_tavoli">LISTA TAVOLI</string>
+    <string name="cap">CAP</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="p">P</string>
+    <string name="t">T</string>
+    <string name="v">V</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="zero">0</string>
+    <string name="canc">CANC</string>
+    <string name="numero_tavolo">NUMERO TAVOLO</string>
 </resources>

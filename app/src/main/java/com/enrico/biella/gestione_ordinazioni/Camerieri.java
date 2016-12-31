@@ -1,7 +1,6 @@
 package com.enrico.biella.gestione_ordinazioni;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -50,7 +49,6 @@ public class Camerieri extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton falso = (FloatingActionButton) findViewById(R.id.falso);
-        falso.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
         falso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +56,6 @@ public class Camerieri extends AppCompatActivity {
             }
         });
         FloatingActionButton vero = (FloatingActionButton) findViewById(R.id.vero);
-        vero.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
         vero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

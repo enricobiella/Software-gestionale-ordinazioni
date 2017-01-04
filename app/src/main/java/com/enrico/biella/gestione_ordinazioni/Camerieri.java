@@ -26,8 +26,8 @@ import Objects.Cameriere;
 public class Camerieri extends AppCompatActivity {
 
     public static String CAMERIERE = "cameriere";
-    private ArrayList<String> elencoCamerieri;
     private Cameriere cameriere;
+    private ArrayList<String> elencoCamerieri;
     private SQLiteDatabase mydatabase;
     private View vecchiaView;
     private int currentListItemIndex;
@@ -64,6 +64,7 @@ public class Camerieri extends AppCompatActivity {
                 }
             }
         });
+        getSupportActionBar().setTitle(R.string.title_activity_camerieri);
         setDatabase();
         binding();
         refreshLista();
@@ -101,9 +102,9 @@ public class Camerieri extends AppCompatActivity {
         mydatabase.execSQL("DROP TABLE IF EXISTS camerieri;");
         mydatabase.execSQL("DROP TABLE IF EXISTS prodotti;");
         mydatabase.execSQL("DROP TABLE IF EXISTS aggiunte;");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS camerieri(codice mediumint(5) NOT NULL,nome VARCHAR);");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS prodotti(codice mediumint(5) NOT NULL,descrizione VARCHAR, bottone VARCHAR);");
-        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS aggiunte(descrizione VARCHAR NOT NULL,consenza VARCHAR);");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS camerieri(codice mediumint(5) NOT NULL,nome VARCHAR(30));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS prodotti(codice mediumint(5) NOT NULL,descrizione VARCHAR(30), bottone VARCHAR(30));");
+        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS aggiunte(descrizione VARCHAR(30) NOT NULL,consenza VARCHAR(30));");
         File sdcard = Environment.getExternalStorageDirectory();
         File file = new File(sdcard, "Download//archivi.dat");
         try {
@@ -146,5 +147,11 @@ public class Camerieri extends AppCompatActivity {
         Intent nuovaPaginaGestioneComande = new Intent(Camerieri.this, GestioneComande.class);
         nuovaPaginaGestioneComande.putExtra(CAMERIERE,c);
         startActivity(nuovaPaginaGestioneComande);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/bevande"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_column="0"
                 android:layout_span="1"
                 android:text="@string/bevande" />
@@ -35,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/birre"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_column="1"
                 android:layout_span="1"
                 android:text="@string/birre" />
@@ -44,6 +46,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/coca_cola"
                 android:layout_column="2"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_span="1"
                 android:text="@string/coca_cola" />
         </TableRow>
@@ -57,12 +60,14 @@
                 android:layout_height="match_parent"
                 android:id="@+id/vini"
                 android:layout_column="0"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_span="1"
                 android:text="@string/vini" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="startActivityScegliProdotto"
                 android:id="@+id/lattine"
                 android:layout_column="1"
                 android:layout_span="1"
@@ -70,6 +75,7 @@
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_height="match_parent"
                 android:id="@+id/caffe"
                 android:layout_column="2"
@@ -83,6 +89,7 @@
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_height="match_parent"
                 android:id="@+id/pizze"
                 android:layout_column="0"
@@ -91,6 +98,7 @@
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_height="match_parent"
                 android:id="@+id/carne"
                 android:layout_column="1"
@@ -99,6 +107,7 @@
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_height="match_parent"
                 android:id="@+id/pesce"
                 android:layout_column="2"
@@ -113,6 +122,7 @@
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="startActivityScegliProdotto"
                 android:id="@+id/primi_piatti"
                 android:layout_column="0"
                 android:layout_span="1"
@@ -120,6 +130,7 @@
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
+                android:onClick="startActivityScegliProdotto"
                 android:layout_height="match_parent"
                 android:id="@+id/cucina"
                 android:layout_column="1"
@@ -129,6 +140,7 @@
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="startActivityScegliProdotto"
                 android:id="@+id/contorni"
                 android:layout_column="2"
                 android:layout_span="1"
@@ -142,6 +154,7 @@
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="startActivityScegliProdotto"
                 android:id="@+id/gelati"
                 android:layout_column="0"
                 android:layout_span="1"
@@ -150,6 +163,7 @@
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="startActivityScegliProdotto"
                 android:id="@+id/dessert"
                 android:layout_column="1"
                 android:layout_span="1"
@@ -158,6 +172,7 @@
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:onClick="startActivityScegliProdotto"
                 android:id="@+id/amari_liquori"
                 android:layout_column="2"
                 android:layout_span="1"

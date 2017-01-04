@@ -34,6 +34,7 @@ public class InserisciServizi extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tavolo.setServizi(contatore);
                 startActivityScegliCategoria();
             }
         });
@@ -44,7 +45,14 @@ public class InserisciServizi extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            onBackPressed();  return true;
+            //onBackPressed();
+            if(contatore<1){
+                startActivityInserisciTavolo();
+            }else{
+                tavolo.setServizi(contatore);
+                startActivityScegliCategoria();
+            }
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -55,11 +63,11 @@ public class InserisciServizi extends AppCompatActivity {
         tavolo=(Tavolo)i.getSerializableExtra(TAVOLO);
     }
     public void startActivityScegliCategoria() {
-        tavolo.setServizi(contatore);
         Intent nuovaPaginaScegliCategoria = new Intent(InserisciServizi.this, ScegliCategoria.class);
         nuovaPaginaScegliCategoria.putExtra(CAMERIERE,cameriere);
         nuovaPaginaScegliCategoria.putExtra(TAVOLO,tavolo);
         startActivity(nuovaPaginaScegliCategoria);
+        finish();
     }
     public void clickPlus(View v){
         ++contatore;
@@ -72,6 +80,21 @@ public class InserisciServizi extends AppCompatActivity {
         }else {
             --contatore;
             schermo.setText(String.valueOf(contatore));
+        }
+    }
+    public void startActivityInserisciTavolo() {
+        Intent nuovaActivityInserisciTavolo = new Intent(InserisciServizi.this, InserisciTavolo.class);
+        nuovaActivityInserisciTavolo.putExtra(CAMERIERE,cameriere);
+        startActivity(nuovaActivityInserisciTavolo);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(contatore<1){
+            startActivityInserisciTavolo();
+        }else{
+            startActivityScegliCategoria();
         }
     }
 }

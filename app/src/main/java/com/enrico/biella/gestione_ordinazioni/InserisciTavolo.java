@@ -50,7 +50,6 @@ public class InserisciTavolo extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_inserisci_tavolo, menu);
-
         return true;
     }
 
@@ -60,7 +59,9 @@ public class InserisciTavolo extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            onBackPressed();  return true;
+            //onBackPressed();
+            startActivityGestioneComande();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -72,6 +73,7 @@ public class InserisciTavolo extends AppCompatActivity {
             nuovaPaginaInserisciServizi.putExtra(CAMERIERE, cameriere);
             nuovaPaginaInserisciServizi.putExtra(TAVOLO, tavolo);
             startActivity(nuovaPaginaInserisciServizi);
+            finish();
         }
     }
 
@@ -106,5 +108,16 @@ public class InserisciTavolo extends AppCompatActivity {
             }
             return;
         }
+    }
+    public void startActivityGestioneComande() {
+        Intent nuovaPaginaGestioneComande = new Intent(InserisciTavolo.this, GestioneComande.class);
+        nuovaPaginaGestioneComande.putExtra(CAMERIERE,cameriere);
+        startActivity(nuovaPaginaGestioneComande);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivityGestioneComande();
     }
 }

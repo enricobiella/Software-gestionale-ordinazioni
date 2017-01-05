@@ -6,7 +6,7 @@
     <string name="conferma">Conferma</string>
     <string name="seleziona_un_cameriere">Seleziona un cameriere</string>
     <string name="title_activity_activity_camerieri">ActivityCamerieri</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Impostazioni</string>
     <string name="title_activity_camerieri">Seleziona un cameriere:</string>
     <string name="title_activity_gestione_comande">GestioneComande</string>
     <string name="gestione_comande">GESTIONE COMANDE</string>
@@ -54,4 +54,5 @@
     <string name="schermo">0</string>
     <string name="title_activity_scegli_prodotto">ScegliProdotto</string>
     <string name="action_search">Cerca...</string>
+    <string name="download_db">Caricamento delle informazioni in corso...</string>
 </resources>

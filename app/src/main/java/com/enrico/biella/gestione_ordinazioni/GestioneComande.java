@@ -13,6 +13,7 @@ public class GestioneComande extends AppCompatActivity {
 
     public static String CAMERIERE = "cameriere";
     private Cameriere cameriere;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

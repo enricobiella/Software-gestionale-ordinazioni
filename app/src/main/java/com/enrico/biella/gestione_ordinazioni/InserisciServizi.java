@@ -13,6 +13,7 @@ import Objects.Cameriere;
 import Objects.Tavolo;
 
 public class InserisciServizi extends AppCompatActivity {
+
     private static final String CAMERIERE = "cameriere";
     private static final String TAVOLO = "tavolo";
     private Cameriere cameriere;

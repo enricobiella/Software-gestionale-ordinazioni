@@ -20,4 +20,9 @@ public class Cameriere implements Serializable {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

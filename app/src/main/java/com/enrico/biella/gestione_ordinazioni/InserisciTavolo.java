@@ -44,6 +44,7 @@ public class InserisciTavolo extends AppCompatActivity {
     private void binding() {
         editText=(TextView) findViewById(R.id.textView);
         array_parole=new ArrayList<>(5);
+
     }
 
     @Override

@@ -87,6 +87,7 @@ public class ScegliProdotto extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_scegli_prodotto, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint(getResources().getString(R.string.action_search));
         // Configure the search info and add any event listeners
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

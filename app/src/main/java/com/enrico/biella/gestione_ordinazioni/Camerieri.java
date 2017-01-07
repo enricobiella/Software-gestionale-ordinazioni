@@ -4,16 +4,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Environment;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
@@ -30,6 +31,7 @@ public class Camerieri extends AppCompatActivity {
     private int currentListItemIndex;
     private ArrayAdapter<Cameriere> itemsAdapter;
     private ListView lista;
+    private CoordinatorLayout cl;
     public static boolean AGGIORNA = true;
 
     private void binding() {
@@ -37,6 +39,7 @@ public class Camerieri extends AppCompatActivity {
         //text = (TextView) findViewById(R.id.text);
         Bundle extras = getIntent().getExtras();
         lista = (ListView) findViewById(R.id.listView);
+        cl=(CoordinatorLayout)findViewById(R.id.coordinator_layout);
         vecchiaView=null;
         cameriere=null;
     }
@@ -97,17 +100,21 @@ public class Camerieri extends AppCompatActivity {
     private  void downloadDB()
     {
         if(AGGIORNA) {
-                File sdcard = Environment.getExternalStorageDirectory();
-                File file = new File(sdcard, "Download//archivi.dat");
-                mydatabase = openOrCreateDatabase("DB.client", MODE_PRIVATE, null);
-                DownloadDB task = new DownloadDB(file, mydatabase, AGGIORNA, Camerieri.this, new Callable<Integer>() {
-                    @Override
-                    public Integer call() throws Exception {
-                        refreshLista();
-                        return null;
-                    }
-                });
-                task.execute();
+            mydatabase = openOrCreateDatabase("DB.client", MODE_PRIVATE, null);
+            DownloadDB task = new DownloadDB(mydatabase, AGGIORNA,cl, Camerieri.this, new Callable<Integer>() {
+                @Override
+                public Integer call() throws Exception {
+                    refreshLista();
+                    return null;
+                }
+            },new Callable<Integer>() {
+                @Override
+                public Integer call() throws Exception {
+                    downloadDB();
+                    return null;
+                }
+            } );
+            task.execute();
 
         }else {
             mydatabase = openOrCreateDatabase("DB.client", MODE_PRIVATE, null);
@@ -142,5 +149,25 @@ public class Camerieri extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_camerieri, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menu_refresh) {
+            Camerieri.AGGIORNA=true;
+            downloadDB();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

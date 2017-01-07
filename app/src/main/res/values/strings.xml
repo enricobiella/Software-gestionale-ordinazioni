@@ -55,4 +55,10 @@
     <string name="title_activity_scegli_prodotto">ScegliProdotto</string>
     <string name="action_search">Cerca...</string>
     <string name="download_db">Caricamento delle informazioni in corso...</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="elementi_inseriti">Elementi inseriti.</string>
+    <string name="refresh">REFRESH</string>
+    <string name="elementi_non_inseriti">Si è verificato un errore.</string>
+    <string name="errore_lettura">Errore di lettura file.</string>
+    <string name="errore_connesione">Errore di connessione.</string>
 </resources>

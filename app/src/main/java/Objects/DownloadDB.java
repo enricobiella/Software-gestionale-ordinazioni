@@ -28,7 +28,7 @@ import jcifs.smb.SmbFileInputStream;
 
 public class DownloadDB extends AsyncTask<Void, Void, Boolean>
 {
-    private static final String ip = "192.168.1.8";
+    private static final String ip = "192.168.1.25";
     private static final String username="enrico";
     private static final String password="Vivainter1";
     private static final String ENCODING = "windows-1252";

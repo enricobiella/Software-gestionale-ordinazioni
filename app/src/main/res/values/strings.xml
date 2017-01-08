@@ -61,4 +61,7 @@
     <string name="elementi_non_inseriti">Si è verificato un errore.</string>
     <string name="errore_lettura">Errore di lettura file.</string>
     <string name="errore_connesione">Errore di connessione.</string>
+    <string name="title_activity_activity_prodotto">ActivityProdotto</string>
+    <string name="prodotto_inserito">Prodotto inserito.</string>
+    <string name="prodotto_non_inserito">Prodotto NON inserito.</string>
 </resources>

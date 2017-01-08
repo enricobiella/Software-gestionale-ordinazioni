@@ -9,12 +9,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.enrico.biella.gestione_ordinazioni.InserisciServizi"
-    tools:showIn="@layout/activity_inserisci_servizi">
+    tools:context="com.enrico.biella.gestione_ordinazioni.ActivityProdotto"
+    tools:showIn="@layout/activity_activity_prodotto">
 
     <TableLayout
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:shrinkColumns="*"
         android:stretchColumns="*">
@@ -32,10 +31,9 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/button"
+                android:id="@+id/clickPlus"
                 android:src="@drawable/ic_add_circle_outline_white_24dp"
-                android:background="@drawable/cell_shape_green"
-                android:onClick="clickPlus" />
+                android:background="@drawable/cell_shape_green" />
         </TableRow>
 
         <TableRow
@@ -50,7 +48,7 @@
                 android:layout_span="0"
                 android:layout_column="0"
                 android:text="@string/schermo"
-                android:id="@+id/schermo"
+                android:id="@+id/schermo1"
                 android:textSize="90sp"
                 android:singleLine="true"
                 android:gravity="center"
@@ -68,15 +66,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_remove_circle_outline_white_24dp"
-                android:id="@+id/button2"
-                android:background="@drawable/cell_shape_red"
-                android:onClick="clickMinus" />
+                android:id="@+id/clickRemove"
+                android:background="@drawable/cell_shape_red" />
         </TableRow>
 
         <TableRow
             android:layout_weight="1.25"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+            android:layout_height="match_parent" >
 
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>

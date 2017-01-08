@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -30,19 +32,19 @@ public class ScegliProdotto extends AppCompatActivity {
     private static final String DESCRIZIONE = "descrizione";
     private static final String BOTTONE ="bottone" ;
     private static final String TABLE_NAME = "prodotti";
+    private static final int REQUEST_ACTIVITY_PRODOTTO = 1;
+    private static final String PRODOTTO = "prodotto";
     private Cameriere cameriere;
     private Tavolo tavolo;
     private String categoria;
-    private Prodotto prodotto;
-
     private ArrayList<Prodotto> elencoCategoria;
     private SQLiteDatabase mydatabase;
-    private View vecchiaView;
-    private int currentListItemIndex;
-    ArrayAdapter<Prodotto> itemsAdapter;
-    ListView lista;
+    private ArrayAdapter<Prodotto> itemsAdapter;
+    private ListView lista;
 
     private  SearchView searchView;
+    private CoordinatorLayout cl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +59,8 @@ public class ScegliProdotto extends AppCompatActivity {
         //refreshLista();
     }
     private void binding() {
-        //buttonBack=(Button)findViewById(R.id.buttonBack);
-        //text = (TextView) findViewById(R.id.text);
+        cl=(CoordinatorLayout)findViewById(R.id.coordinator_layout_scegli_prodotto);
         lista = (ListView) findViewById(R.id.listView);
-        vecchiaView=null;
     }
     private void setValori() {
         Intent i = getIntent();
@@ -141,15 +141,7 @@ public class ScegliProdotto extends AppCompatActivity {
     private void setupListViewListener() {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (vecchiaView != null) {
-                    vecchiaView.setBackgroundColor(getResources().getColor(R.color.trans));
-                }
-                //view.setBackground(getDrawable(R.drawable.button_circle_pressed_other));
-                vecchiaView = view;
-                currentListItemIndex = position;
-                prodotto=elencoCategoria.get(currentListItemIndex);
-                vecchiaView.setBackgroundColor(getResources().getColor(R.color.select));
-
+                startActivityForResultActivityProdotto(((Prodotto)(parent.getAdapter().getItem(position))));
             }
         });
     }
@@ -167,7 +159,6 @@ public class ScegliProdotto extends AppCompatActivity {
     }
     private ArrayList<Prodotto> getAllCategoria() {
         ArrayList<Prodotto> ritorno=new ArrayList<>(20);;
-        //Cursor cursor = mydatabase.query(false, "prodotti", new String[]{"codice", "descrizione"}, null,null, null, null, "descrizione", null) ;
         String [] settingsProjection = {
                 _ID,
                 DESCRIZIONE
@@ -232,5 +223,22 @@ public class ScegliProdotto extends AppCompatActivity {
     }
     private void setDatabase() {
         mydatabase = openOrCreateDatabase("DB.client", MODE_PRIVATE, null);
+    }
+    public void startActivityForResultActivityProdotto(Prodotto p) {
+        Intent nuovaPaginaActivityProdotto = new Intent(ScegliProdotto.this, ActivityProdotto.class);
+        nuovaPaginaActivityProdotto.putExtra(TAVOLO, tavolo);
+        nuovaPaginaActivityProdotto.putExtra(PRODOTTO, p);
+        startActivityForResult(nuovaPaginaActivityProdotto, REQUEST_ACTIVITY_PRODOTTO);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_ACTIVITY_PRODOTTO && resultCode == RESULT_OK) {
+            tavolo.inserisciProdotto((Prodotto) data.getExtras().getSerializable(PRODOTTO));
+            Snackbar.make(cl,getResources().getText(R.string.prodotto_inserito),Snackbar.LENGTH_SHORT).show();
+        }else{
+            Snackbar.make(cl,getResources().getText(R.string.prodotto_non_inserito),Snackbar.LENGTH_SHORT).show();
+        }
     }
 }

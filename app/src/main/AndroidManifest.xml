@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -66,6 +66,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.ScegliCategoria" />
+        </activity>
+        <activity
+            android:name=".ActivityProdotto"
+            android:label="@string/title_activity_activity_prodotto"
+            android:parentActivityName=".ScegliProdotto"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.ScegliProdotto" />
         </activity>
     </application>
 

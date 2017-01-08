@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/coordinator_layout_scegli_prodotto"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.enrico.biella.gestione_ordinazioni.ScegliProdotto">
+    tools:context="com.enrico.biella.gestione_ordinazioni.ActivityProdotto">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -22,6 +21,15 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_scegli_prodotto" />
+    <include layout="@layout/content_activity_prodotto" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/clickInserisciProdotto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_done_white_24dp"
+        app:backgroundTint="@color/green"/>
 
 </android.support.design.widget.CoordinatorLayout>

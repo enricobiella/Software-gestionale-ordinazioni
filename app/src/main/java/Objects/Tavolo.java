@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Tavolo implements Serializable{
     private String nomeTavolo;
     private int servizi;
-    private ArrayList<String> elenco_prodotti;
+    private ArrayList<Prodotto> elenco_prodotti;
 
     public Tavolo(String nomeTavolo){
         this.nomeTavolo=nomeTavolo;
@@ -17,7 +17,20 @@ public class Tavolo implements Serializable{
         servizi=0;
     }
 
-    public ArrayList<String> getElenco_prodotti() {
+    public void inserisciProdotto(Prodotto p){
+        elenco_prodotti.add(p);
+    }
+    public boolean rimuoviProdotto(Prodotto p){
+        if(elenco_prodotti.contains(p)){
+            elenco_prodotti.remove(p);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public ArrayList<Prodotto> getElenco_prodotti() {
         return elenco_prodotti;
     }
 

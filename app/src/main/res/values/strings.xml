@@ -64,4 +64,14 @@
     <string name="title_activity_activity_prodotto">ActivityProdotto</string>
     <string name="prodotto_inserito">Prodotto inserito.</string>
     <string name="prodotto_non_inserito">Prodotto NON inserito.</string>
+    <string name="file_not_exists">Il file NON esiste.</string>
+    <string name="menu_done">Fatto</string>
+    <string name="ok">OK</string>
+    <string name="indietro">Indietro</string>
+    <string name="title_dialog">INVIA COMANDA</string>
+    <string name="messaggio_dialog">Vuoi inviare la comanda?</string>
+    <string name="title_activity_elenco_prodotti">ElencoProdotti</string>
+    <string name="title_activity_modifica_prodotto">ModificaProdotto</string>
+    <string name="prodotto_non_modificato">Prodotto NON modificato.</string>
+    <string name="prodotto_modificato_rimosso">Prodotto modificato/rimosso.</string>
 </resources>

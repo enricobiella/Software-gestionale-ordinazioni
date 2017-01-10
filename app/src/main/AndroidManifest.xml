@@ -56,7 +56,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.enrico.biella.gestione_ordinazioni.InserisciTavolo" />
+                android:value="com.enrico.biella.gestione_ordinazioni.ElencoProdotti" />
         </activity>
         <activity
             android:name=".ScegliProdotto"
@@ -75,6 +75,24 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.ScegliProdotto" />
+        </activity>
+        <activity
+            android:name=".ElencoProdotti"
+            android:label="@string/title_activity_elenco_prodotti"
+            android:parentActivityName=".InserisciTavolo"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.InserisciTavolo" />
+        </activity>
+        <activity
+            android:name=".ModificaProdotto"
+            android:label="@string/title_activity_modifica_prodotto"
+            android:parentActivityName=".ElencoProdotti"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.ElencoProdotti" />
         </activity>
     </application>
 

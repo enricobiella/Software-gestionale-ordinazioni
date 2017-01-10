@@ -19,6 +19,7 @@ public class ScegliCategoria extends AppCompatActivity {
     private static final String TAVOLO = "tavolo";
     private Tavolo tavolo;
     private String categoria;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,22 +29,27 @@ public class ScegliCategoria extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setCameriereTavolo();
         getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
-        //getSupportActionBar().setTitle(cameriere.getNome());
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            //onBackPressed();
-            startActivityInserisciTavolo();
-            return true;
+        switch (id){
+            case android.R.id.home:
+                startActivityElencoProdotti();
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+    public void startActivityElencoProdotti() {
+        Intent nuovaPaginaElencoProdotti = new Intent(ScegliCategoria.this, ElencoProdotti.class);
+        nuovaPaginaElencoProdotti.putExtra(CAMERIERE,cameriere);
+        nuovaPaginaElencoProdotti.putExtra(TAVOLO,tavolo);
+        startActivity(nuovaPaginaElencoProdotti);
+        finish();
+    }
+
     private void setCameriereTavolo() {
         Intent i = getIntent();
         cameriere= (Cameriere) i.getSerializableExtra(CAMERIERE);
@@ -57,16 +63,11 @@ public class ScegliCategoria extends AppCompatActivity {
         startActivity(activityServizi);
         finish();
     }
-    public void startActivityInserisciTavolo() {
-        Intent nuovaActivityInserisciTavolo = new Intent(ScegliCategoria.this, InserisciTavolo.class);
-        nuovaActivityInserisciTavolo.putExtra(CAMERIERE,cameriere);
-        startActivity(nuovaActivityInserisciTavolo);
-        finish();
-    }
+
 
     @Override
     public void onBackPressed() {
-        startActivityInserisciTavolo();
+        startActivityElencoProdotti();
     }
 
     public void startActivityScegliProdotto(View v) {

@@ -36,7 +36,7 @@ public class InserisciServizi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tavolo.setServizi(contatore);
-                startActivityScegliCategoria();
+                startActivityElencoProdotti();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,7 +51,7 @@ public class InserisciServizi extends AppCompatActivity {
                 startActivityInserisciTavolo();
             }else{
                 tavolo.setServizi(contatore);
-                startActivityScegliCategoria();
+                startActivityElencoProdotti();
             }
             return true;
         }
@@ -63,11 +63,11 @@ public class InserisciServizi extends AppCompatActivity {
         cameriere= (Cameriere) i.getSerializableExtra(CAMERIERE);
         tavolo=(Tavolo)i.getSerializableExtra(TAVOLO);
     }
-    public void startActivityScegliCategoria() {
-        Intent nuovaPaginaScegliCategoria = new Intent(InserisciServizi.this, ScegliCategoria.class);
-        nuovaPaginaScegliCategoria.putExtra(CAMERIERE,cameriere);
-        nuovaPaginaScegliCategoria.putExtra(TAVOLO,tavolo);
-        startActivity(nuovaPaginaScegliCategoria);
+    public void startActivityElencoProdotti() {
+        Intent nuovaPaginaElencoProdotti = new Intent(InserisciServizi.this, ElencoProdotti.class);
+        nuovaPaginaElencoProdotti.putExtra(CAMERIERE,cameriere);
+        nuovaPaginaElencoProdotti.putExtra(TAVOLO,tavolo);
+        startActivity(nuovaPaginaElencoProdotti);
         finish();
     }
     public void clickPlus(View v){
@@ -95,7 +95,7 @@ public class InserisciServizi extends AppCompatActivity {
         if(contatore<1){
             startActivityInserisciTavolo();
         }else{
-            startActivityScegliCategoria();
+            startActivityElencoProdotti();
         }
     }
 }

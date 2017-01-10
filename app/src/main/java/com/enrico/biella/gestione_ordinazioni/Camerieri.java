@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 import Objects.Cameriere;
-import Objects.DownloadDB;
+import Objects.ConnessioneDB;
 
 public class Camerieri extends AppCompatActivity {
 
@@ -101,7 +101,7 @@ public class Camerieri extends AppCompatActivity {
     {
         if(AGGIORNA) {
             mydatabase = openOrCreateDatabase("DB.client", MODE_PRIVATE, null);
-            DownloadDB task = new DownloadDB(mydatabase, AGGIORNA,cl, Camerieri.this, new Callable<Integer>() {
+            ConnessioneDB task = new ConnessioneDB(mydatabase,cl, Camerieri.this, new Callable<Integer>() {
                 @Override
                 public Integer call() throws Exception {
                     refreshLista();
@@ -113,7 +113,7 @@ public class Camerieri extends AppCompatActivity {
                     downloadDB();
                     return null;
                 }
-            } );
+            } ,ConnessioneDB.DOWNLOAD);
             task.execute();
 
         }else {

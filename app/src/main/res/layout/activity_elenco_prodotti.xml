@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/coordinator_layout_scegli_categoria"
     android:fitsSystemWindows="true"
-    tools:context="com.enrico.biella.gestione_ordinazioni.ScegliCategoria">
+    android:id="@+id/coordinator_layout_elenco_prodotti"
+    tools:context="com.enrico.biella.gestione_ordinazioni.ElencoProdotti">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -22,7 +22,15 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_scegli_categoria" />
+    <include layout="@layout/content_elenco_prodotti" />
 
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/falso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startActivityScegliCategoria"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_white_24dp"
+        app:backgroundTint="@color/red" />
 </android.support.design.widget.CoordinatorLayout>

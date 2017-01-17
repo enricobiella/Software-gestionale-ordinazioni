@@ -27,12 +27,13 @@ import jcifs.smb.SmbFileInputStream;
 import jcifs.smb.SmbFileOutputStream;
 
 /**
- * Created by enrico on 05/01/2017.
+ * Created by SUPERUOMO_BIELLA_HASHMAP_WOOOO on 05/01/2017.
  */
 
 public class ConnessioneDB extends AsyncTask<Void, Void, Boolean>
 {
-    private static final String ip = "192.168.1.5";
+    private static final String ip = "172.17.2.126";
+
     private static final String username="enrico";
     private static final String password="Vivainter1";
     private static final String ENCODING = "windows-1252";
@@ -101,7 +102,6 @@ public class ConnessioneDB extends AsyncTask<Void, Void, Boolean>
                     BufferedReader br = new BufferedReader(new InputStreamReader(new SmbFileInputStream(file), ENCODING));
                     String line;
                     while ((line = br.readLine()) != null) {
-
                         mydatabase.execSQL(line);
                     }
                     br.close();

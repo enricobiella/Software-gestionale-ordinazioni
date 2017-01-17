@@ -74,4 +74,6 @@
     <string name="title_activity_modifica_prodotto">ModificaProdotto</string>
     <string name="prodotto_non_modificato">Prodotto NON modificato.</string>
     <string name="prodotto_modificato_rimosso">Prodotto modificato/rimosso.</string>
+    <string name="title_activity_elenco_modifiche">ElencoModifiche</string>
+    <string name="title_activity_scegli_aggiunta">ScegliAggiunta</string>
 </resources>

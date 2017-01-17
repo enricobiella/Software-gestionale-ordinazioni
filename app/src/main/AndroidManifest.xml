@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icona_ordinazioni_arancione_192"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -93,6 +93,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.ElencoProdotti" />
+        </activity>
+        <activity
+            android:name=".ElencoModifiche"
+            android:label="@string/title_activity_elenco_modifiche"
+            android:parentActivityName=".ModificaProdotto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScegliAggiunta"
+            android:label="@string/title_activity_scegli_aggiunta"
+            android:parentActivityName=".ElencoModifiche"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.ElencoModifiche" />
         </activity>
     </application>
 

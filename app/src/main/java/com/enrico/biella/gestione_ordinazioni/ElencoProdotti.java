@@ -11,11 +11,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Objects.Cameriere;
 import Objects.ConnessioneDB;
@@ -32,7 +38,7 @@ public class ElencoProdotti extends AppCompatActivity {
     private Cameriere cameriere;
     private Tavolo tavolo;
     private CoordinatorLayout cl;
-    private ListView lista;
+    private SwipeMenuListView lista;
     private ArrayList<Prodotto> elencoProdotti;
     private ArrayAdapter<Prodotto> itemsAdapter;
 
@@ -45,8 +51,56 @@ public class ElencoProdotti extends AppCompatActivity {
         setCameriereTavolo();
         binding();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
+        setupList();
         refreshLista();
     }
+    private int dp2px(int dp) {
+        float scale = getResources().getDisplayMetrics().density;
+        int pixels = (int) (dp * scale + 0.5f);
+        return pixels;
+    }
+    private void setupList() {
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                deleteItem.setBackground(R.color.red);
+                // set item width
+                deleteItem.setWidth(dp2px(90));
+                // set a icon
+                deleteItem.setIcon(R.drawable.ic_delete_white_18dp);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+// set creator
+        lista.setMenuCreator(creator);
+        lista.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener(){
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        tavolo.rimuoviProdotto(tavolo.getElenco_prodotti().get(index));
+                        refreshLista();
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
+        // Close Interpolator
+        lista.setCloseInterpolator(new BounceInterpolator());
+// Open Interpolator
+        lista.setOpenInterpolator(new BounceInterpolator());
+        lista.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+    }
+
     public void startActivityScegliCategoria(View v) {
         Intent nuovaPaginaScegliCategoria = new Intent(ElencoProdotti.this, ScegliCategoria.class);
         nuovaPaginaScegliCategoria.putExtra(CAMERIERE,cameriere);
@@ -55,11 +109,8 @@ public class ElencoProdotti extends AppCompatActivity {
         finish();
     }
     private void binding() {
-        lista=(ListView)findViewById(R.id.listViewElencoProdotti);
+        lista=(SwipeMenuListView)findViewById(R.id.listViewElencoProdotti);
         cl = (CoordinatorLayout) findViewById(R.id.coordinator_layout_elenco_prodotti);
-        if(tavolo.getCameriere()==null){
-        tavolo.setCameriere(cameriere);
-        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +121,7 @@ public class ElencoProdotti extends AppCompatActivity {
 
     private void refreshLista() {
         elencoProdotti=tavolo.getElenco_prodotti();
+        Collections.sort(tavolo.getElenco_prodotti());
         itemsAdapter=new ArrayAdapter<Prodotto>(this, R.layout.my_expandable_list,elencoProdotti);
         lista.setAdapter(itemsAdapter);
         setupListViewListener();
@@ -145,7 +197,7 @@ public class ElencoProdotti extends AppCompatActivity {
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_MODIFICA_PRODOTTO && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_ACTIVITY_PRODOTTO && resultCode == RESULT_OK) {
             tavolo=(Tavolo) data.getExtras().getSerializable(TAVOLO);
             refreshLista();
             Snackbar.make(cl,getResources().getText(R.string.prodotto_modificato_rimosso),Snackbar.LENGTH_SHORT).show();

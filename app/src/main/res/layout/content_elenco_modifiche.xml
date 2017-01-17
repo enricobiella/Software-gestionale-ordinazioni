@@ -9,11 +9,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.enrico.biella.gestione_ordinazioni.ElencoProdotti"
-    tools:showIn="@layout/activity_elenco_prodotti">
+    tools:context="com.enrico.biella.gestione_ordinazioni.ElencoModifiche"
+    tools:showIn="@layout/activity_elenco_modifiche">
     <com.baoyz.swipemenulistview.SwipeMenuListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listViewElencoProdotti"
+        android:id="@+id/listViewElencoModifiche"
         android:scrollbars="vertical"/>
 </RelativeLayout>

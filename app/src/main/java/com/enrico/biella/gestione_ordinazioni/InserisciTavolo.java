@@ -70,6 +70,7 @@ public class InserisciTavolo extends AppCompatActivity {
     public void startActivityInserisciServizi(View v) {
         if(array_parole.size()>0) {
             tavolo=new Tavolo(String.valueOf(editText.getText()));
+            tavolo.setCameriere(cameriere);
             Intent nuovaPaginaInserisciServizi = new Intent(InserisciTavolo.this, InserisciServizi.class);
             nuovaPaginaInserisciServizi.putExtra(CAMERIERE, cameriere);
             nuovaPaginaInserisciServizi.putExtra(TAVOLO, tavolo);

@@ -2,7 +2,9 @@ package com.enrico.biella.gestione_ordinazioni;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -15,6 +17,7 @@ import Objects.Tavolo;
 
 public class ModificaProdotto extends AppCompatActivity {
 
+    private static final int REQUEST_ELENCO_MODIFICHE = 3;
     private Prodotto prodotto;
     private Prodotto prodottoSalvato;
     private TextView schermo;
@@ -25,7 +28,8 @@ public class ModificaProdotto extends AppCompatActivity {
     private static final String TAVOLO = "tavolo";
     private Tavolo tavolo;
     private FloatingActionButton clickInserisciProdotto;
-    private FloatingActionButton clickCancel;
+    private FloatingActionButton clickModify;
+    private CoordinatorLayout cl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +77,16 @@ public class ModificaProdotto extends AppCompatActivity {
     }
 
     private void binding() {
+        cl=(CoordinatorLayout)findViewById(R.id.coordinator_layout_modifica_prodotto);
         schermo = (TextView) findViewById(R.id.schermo1);
         schermo.setText(String.valueOf(contatore));
         clickPlus=(ImageButton)findViewById(R.id.clickPlus);
         clickRemove=(ImageButton)findViewById(R.id.clickRemove);
-        clickCancel=(FloatingActionButton)findViewById(R.id.cancel);
-        clickCancel.setOnClickListener(new View.OnClickListener() {
+        clickModify=(FloatingActionButton)findViewById(R.id.modify);
+        clickModify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tavolo.rimuoviProdotto(prodottoSalvato);
-                finishWithResult();
+                startActivityForResultElencoModifiche();
             }
         });
         clickInserisciProdotto=(FloatingActionButton)findViewById(R.id.inserisci);
@@ -119,6 +123,11 @@ public class ModificaProdotto extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    public void startActivityForResultElencoModifiche() {
+        Intent nuovaPaginaElencoModifiche = new Intent(ModificaProdotto.this, ElencoModifiche.class);
+        nuovaPaginaElencoModifiche.putExtra(PRODOTTO, prodotto);
+        startActivityForResult(nuovaPaginaElencoModifiche, REQUEST_ELENCO_MODIFICHE);
+    }
     private void finishWithResult()
     {
         Intent intent = new Intent();
@@ -126,5 +135,13 @@ public class ModificaProdotto extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_ELENCO_MODIFICHE && resultCode == RESULT_OK) {
+            prodotto=(Prodotto) data.getExtras().getSerializable(PRODOTTO);
+            Snackbar.make(cl,getResources().getText(R.string.prodotto_modificato_rimosso),Snackbar.LENGTH_SHORT).show();
+        }else{
+            Snackbar.make(cl,getResources().getText(R.string.prodotto_non_modificato),Snackbar.LENGTH_SHORT).show();
+        }
+    }
 }

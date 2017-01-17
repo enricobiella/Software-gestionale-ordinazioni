@@ -18,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import Objects.Cameriere;
 import Objects.Prodotto;
@@ -51,11 +53,11 @@ public class ScegliProdotto extends AppCompatActivity {
         setContentView(R.layout.activity_scegli_prodotto);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setValori();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
+        setValori();
         setDatabase();
         binding();
+        getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
         //refreshLista();
     }
     private void binding() {
@@ -236,6 +238,24 @@ public class ScegliProdotto extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_ACTIVITY_PRODOTTO && resultCode == RESULT_OK) {
             tavolo.inserisciProdotto((Prodotto) data.getExtras().getSerializable(PRODOTTO));
+            Collections.sort(tavolo.getElenco_prodotti(), new Comparator<Prodotto>() {
+                @Override
+                public int compare(Prodotto p1, Prodotto p2) {
+                    int n1=p1.getCodice()-p2.getCodice();
+                    boolean n2=p1.getAggiunte().equals(p2.getAggiunte());
+                    int n3=p1.getDescrizione().compareTo(p2.getDescrizione());
+                    if(n1==0&&n2==true){
+                        Prodotto p=p1;
+                        p1.setQuantità(p1.getQuantità()+p2.getQuantità());
+                        tavolo.getElenco_prodotti().remove(p1);
+                        tavolo.getElenco_prodotti().remove(p2);
+                        tavolo.getElenco_prodotti().add(p);
+                        return 0;
+                    }else {
+                        return n3;
+                    }
+                }
+            });
             Snackbar.make(cl,getResources().getText(R.string.prodotto_inserito),Snackbar.LENGTH_SHORT).show();
         }else{
             Snackbar.make(cl,getResources().getText(R.string.prodotto_non_inserito),Snackbar.LENGTH_SHORT).show();

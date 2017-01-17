@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Tavolo implements Serializable{
     private static final String END_FILE = "END OF FILE";
+    private static final int CONSTANT = 9;
     private String nomeTavolo;
     private int servizi;
     private ArrayList<Prodotto> elenco_prodotti;
@@ -42,6 +43,8 @@ public class Tavolo implements Serializable{
         return elenco_prodotti;
     }
 
+
+
     public String getNomeTavolo() {
         return nomeTavolo;
     }
@@ -57,13 +60,28 @@ public class Tavolo implements Serializable{
     public void setCameriere(Cameriere cameriere) {
         this.cameriere=cameriere;
     }
-
+//3
     public ArrayList<String> toComanda() {
         ArrayList<String> ritorno=new ArrayList<>();
         ritorno.add("10;"+servizi+";Servizio;"+cameriere.getNome()+";"+nomeTavolo+";Servizio;"+";;;;;;;;;");
         for (Prodotto p :elenco_prodotti) {
-            ritorno.add(p.getCodice()+";"+p.getQuantità()+";"+p.getDescrizione()+p.getAggiunta()+";"+cameriere.getNome()+";"+nomeTavolo+";"+p.getDescrizione()+";"+p.getAggiunta()+";;;;;;;;;");
+            String s=p.getCodice()+";"+p.getQuantità()+";"+p.getDescrizione();
+            int size=p.getAggiunte().size();
+            for(int i=0;i<size;++i){
+                s+=p.getAggiunte().get(i);
+            }
+            s+=";"+cameriere.getNome()+";"+nomeTavolo+";"+p.getDescrizione()+";";
+            for(int i=0;i<size;++i){
+                s+=p.getAggiunte().get(i)+";";
+            }
+            //ritorno.add(p.getCodice()+";"+p.getQuantità()+";"+p.getDescrizione()+p.getAggiunta()+";"+cameriere.getNome()+";"+nomeTavolo+";"+p.getDescrizione()+";"
+              //      +p.getAggiunta()+";;;;;;;;;");
+            for(int i=0;i<(CONSTANT-size);++i){
+            s+=";";
+            }
+            ritorno.add(s);
         }
+
         ritorno.add(END_FILE);
         return ritorno;
     }

@@ -197,11 +197,16 @@ public class ElencoProdotti extends AppCompatActivity {
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_ACTIVITY_PRODOTTO && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_MODIFICA_PRODOTTO && resultCode == RESULT_OK) {
             tavolo=(Tavolo) data.getExtras().getSerializable(TAVOLO);
             refreshLista();
             Snackbar.make(cl,getResources().getText(R.string.prodotto_modificato_rimosso),Snackbar.LENGTH_SHORT).show();
-        }else{
+        }else if (requestCode == REQUEST_ACTIVITY_PRODOTTO && resultCode == RESULT_OK) {
+            tavolo=(Tavolo) data.getExtras().getSerializable(TAVOLO);
+            refreshLista();
+            Snackbar.make(cl,getResources().getText(R.string.prodotto_modificato_rimosso),Snackbar.LENGTH_SHORT).show();
+        }
+        else{
             Snackbar.make(cl,getResources().getText(R.string.prodotto_non_modificato),Snackbar.LENGTH_SHORT).show();
         }
     }

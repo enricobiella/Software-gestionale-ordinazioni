@@ -129,10 +129,17 @@ public class ElencoModifiche extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    private void finishWithResult()
+    {
+        Intent intent = new Intent();
+        intent.putExtra(PRODOTTO, prodotto);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 
     @Override
     public void onBackPressed() {
-        finish();
+        finishWithResult();
     }
     private void setupListViewListener() {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

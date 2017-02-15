@@ -68,7 +68,8 @@ public class Tavolo implements Serializable{
             String s=p.getCodice()+";"+p.getQuantità()+";"+p.getDescrizione();
             int size=p.getAggiunte().size();
             for(int i=0;i<size;++i){
-                s+=p.getAggiunte().get(i);
+                s+=" "+p.getAggiunte().get(i);
+
             }
             s+=";"+cameriere.getNome()+";"+nomeTavolo+";"+p.getDescrizione()+";";
             for(int i=0;i<size;++i){

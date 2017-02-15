@@ -32,9 +32,11 @@ import jcifs.smb.SmbFileOutputStream;
 
 public class ConnessioneDB extends AsyncTask<Void, Void, Boolean>
 {
-    private static final String ip = "172.17.2.126";
-
+    //TODO: modificare l'ip
+    private static final String ip = "192.168.1.4";
+    //TODO: modificare l'utente
     private static final String username="enrico";
+    //TODO: modificare la password
     private static final String password="Vivainter1";
     private static final String ENCODING = "windows-1252";
     private static final String ERRORE_FILE_NOT_EXISTS = "file_not_exists";
@@ -204,6 +206,7 @@ public class ConnessioneDB extends AsyncTask<Void, Void, Boolean>
 
     private SmbFile getFileFromServer() throws MalformedURLException {
         String user = username + ":" + password;
+        //TODO: modificare il PATH
         String url = "smb://"+ip+"/Dati/archivi.dat";
         SmbFile file = null;
         NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(user);
@@ -212,6 +215,7 @@ public class ConnessioneDB extends AsyncTask<Void, Void, Boolean>
     }
     private SmbFile CreateComanda() throws MalformedURLException {
         String user = username + ":" + password;
+        //TODO: modificare il PATH
         String url = "smb://"+ip+"/Dati/"+"comanda_"+tavolo.getNomeTavolo()+".txt";
         SmbFile file = null;
         NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(user);

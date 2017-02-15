@@ -62,7 +62,7 @@ public class Camerieri extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(cameriere!=null) {
-                    startActivityGestioneComande(cameriere);
+                    startActivityInserisciTavolo();
                 }
             }
         });
@@ -139,10 +139,10 @@ public class Camerieri extends AppCompatActivity {
     }
 
 
-    public void startActivityGestioneComande(Cameriere c) {
-        Intent nuovaPaginaGestioneComande = new Intent(Camerieri.this, GestioneComande.class);
-        nuovaPaginaGestioneComande.putExtra(CAMERIERE,c);
-        startActivity(nuovaPaginaGestioneComande);
+    public void startActivityInserisciTavolo() {
+        Intent nuovaActivityInserisciTavolo = new Intent(Camerieri.this, InserisciTavolo.class);
+        nuovaActivityInserisciTavolo.putExtra(CAMERIERE,cameriere);
+        startActivity(nuovaActivityInserisciTavolo);
         finish();
     }
 

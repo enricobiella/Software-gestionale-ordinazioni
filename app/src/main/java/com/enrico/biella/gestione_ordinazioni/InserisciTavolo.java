@@ -61,7 +61,7 @@ public class InserisciTavolo extends AppCompatActivity {
 
         if (id == android.R.id.home) {
             //onBackPressed();
-            startActivityGestioneComande();
+            startActivityCamerieri();
             return true;
         }
 
@@ -111,15 +111,14 @@ public class InserisciTavolo extends AppCompatActivity {
             return;
         }
     }
-    public void startActivityGestioneComande() {
-        Intent nuovaPaginaGestioneComande = new Intent(InserisciTavolo.this, GestioneComande.class);
-        nuovaPaginaGestioneComande.putExtra(CAMERIERE,cameriere);
-        startActivity(nuovaPaginaGestioneComande);
+    private void startActivityCamerieri() {
+        Intent nuovaActivityCameriere =new Intent(InserisciTavolo.this, Camerieri.class);
+        startActivity(nuovaActivityCameriere);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        startActivityGestioneComande();
+        startActivityCamerieri();
     }
 }

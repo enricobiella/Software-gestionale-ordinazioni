@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ordinazioni</string>
+    <string name="app_name">Ranch</string>
     <string name="selezionaUnCameriere">Seleziona un cameriere</string>
     <string name="termina">Termina</string>
     <string name="admin">Admin</string>
@@ -68,10 +68,22 @@
     <string name="menu_done">Fatto</string>
     <string name="ok">OK</string>
     <string name="indietro">Indietro</string>
-    <string name="title_dialog">INVIA COMANDA</string>
-    <string name="messaggio_dialog">Vuoi inviare la comanda?</string>
+    <string name="title_dialog_invia_comanda">INVIA COMANDA</string>
+    <string name="messaggio_dialog_invia_comanda">Vuoi inviare la comanda?</string>
     <string name="title_activity_elenco_prodotti">ElencoProdotti</string>
     <string name="title_activity_modifica_prodotto">ModificaProdotto</string>
     <string name="prodotto_non_modificato">Prodotto NON modificato.</string>
     <string name="prodotto_modificato_rimosso">Prodotto modificato/rimosso.</string>
+    <string name="title_activity_elenco_modifiche">ElencoModifiche</string>
+    <string name="title_activity_scegli_aggiunta">ScegliAggiunta</string>
+    <string name="comanda_inviata">Comanda inviata.</string>
+    <string name="comanda_non_inviata">Comanda non inviata.</string>
+    <string name="title_activity_elenco_tavoli">Tavoli</string>
+    <string name="con">con</string>
+    <string name="senza">senza</string>
+    <string name="hint_aggiungi_aggiunta">Inserisci un\'aggiunta</string>
+    <string name="non_puoi_eliminare">Impossibile eliminare</string>
+    <string name="title_dialog">ATTENZIONE</string>
+    <string name="messaggio_dialog">Tornando indietro le modifiche non verranno apportate, vuoi continuare?</string>
+    <string name="pallino">S</string>
 </resources>

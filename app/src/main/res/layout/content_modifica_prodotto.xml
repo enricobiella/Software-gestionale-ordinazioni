@@ -51,7 +51,7 @@
                 android:textSize="90sp"
                 android:singleLine="true"
                 android:gravity="center"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textAlignment="center"
                 android:maxLength="13" />
         </TableRow>

@@ -15,6 +15,7 @@ public class ScegliCategoria extends AppCompatActivity {
 
     private static final String CATEGORIA = "categoria";
     private static String CAMERIERE = "cameriere";
+    public static ScegliCategoria ScegliCategoria;
     private Cameriere cameriere;
     private static final String TAVOLO = "tavolo";
     private Tavolo tavolo;
@@ -55,6 +56,7 @@ public class ScegliCategoria extends AppCompatActivity {
         cameriere= (Cameriere) i.getSerializableExtra(CAMERIERE);
         tavolo=(Tavolo)i.getSerializableExtra(TAVOLO);
         categoria="";
+        this.ScegliCategoria=this;
     }
     public void startActivityServizi(View v) {
         Intent activityServizi = new Intent(ScegliCategoria.this, InserisciServizi.class);

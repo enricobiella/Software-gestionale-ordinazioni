@@ -11,10 +11,9 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.enrico.biella.gestione_ordinazioni.ElencoProdotti"
     tools:showIn="@layout/activity_elenco_prodotti">
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/listViewElencoProdotti"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="false" />
+        android:scrollbars="vertical"/>
 </RelativeLayout>

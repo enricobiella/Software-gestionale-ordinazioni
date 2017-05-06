@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -32,8 +31,10 @@ public class ScegliProdotto extends AppCompatActivity {
     private static final String DESCRIZIONE = "descrizione";
     private static final String BOTTONE ="bottone" ;
     private static final String TABLE_NAME = "prodotti";
-    private static final int REQUEST_ACTIVITY_PRODOTTO = 1;
+    private static final int REQUEST_MODIFICA_PRODOTTO_SCEGLI_PRODOTTO = 2;
     private static final String PRODOTTO = "prodotto";
+    private static final String START_FROM = "start_from";
+    public static ScegliProdotto ScegliProdotto;
     private Cameriere cameriere;
     private Tavolo tavolo;
     private String categoria;
@@ -44,6 +45,8 @@ public class ScegliProdotto extends AppCompatActivity {
 
     private  SearchView searchView;
     private CoordinatorLayout cl;
+    private String ActivityScegliProdotto;
+    private boolean result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +54,11 @@ public class ScegliProdotto extends AppCompatActivity {
         setContentView(R.layout.activity_scegli_prodotto);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setValori();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
+        setValori();
         setDatabase();
         binding();
+        getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
         //refreshLista();
     }
     private void binding() {
@@ -63,7 +66,10 @@ public class ScegliProdotto extends AppCompatActivity {
         lista = (ListView) findViewById(R.id.listView);
     }
     private void setValori() {
+        this.ScegliProdotto=this;
         Intent i = getIntent();
+        result=false;
+        ActivityScegliProdotto="ActivityScegliProdotto";
         cameriere= (Cameriere) i.getSerializableExtra(CAMERIERE);
         tavolo=(Tavolo)i.getSerializableExtra(TAVOLO);
         switch (i.getStringExtra(CATEGORIA)){
@@ -124,9 +130,7 @@ public class ScegliProdotto extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            //onBackPressed();
-            startActivityScegliCategoria();
-            finish();
+            onBackPressed();
             return true;
         }
 
@@ -141,7 +145,7 @@ public class ScegliProdotto extends AppCompatActivity {
     private void setupListViewListener() {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivityForResultActivityProdotto(((Prodotto)(parent.getAdapter().getItem(position))));
+                startActivityForResultModificaProdotto(((Prodotto)(parent.getAdapter().getItem(position))));
             }
         });
     }
@@ -182,7 +186,7 @@ public class ScegliProdotto extends AppCompatActivity {
                 codice = cursor.getString(0);
                 descrizione = cursor.getString(1);
 // Adding contact to list
-                ritorno.add( new Prodotto(Integer.valueOf(codice),descrizione));
+                ritorno.add( new Prodotto(codice,descrizione));
 
             } while (cursor.moveToNext());
         }
@@ -214,7 +218,7 @@ public class ScegliProdotto extends AppCompatActivity {
                 codice = cursor.getString(0);
                 descrizione = cursor.getString(1);
 // Adding contact to list
-                ritorno.add( new Prodotto(Integer.valueOf(codice),descrizione));
+                ritorno.add( new Prodotto(codice,descrizione));
 
             } while (cursor.moveToNext());
         }
@@ -224,21 +228,14 @@ public class ScegliProdotto extends AppCompatActivity {
     private void setDatabase() {
         mydatabase = openOrCreateDatabase("DB.client", MODE_PRIVATE, null);
     }
-    public void startActivityForResultActivityProdotto(Prodotto p) {
-        Intent nuovaPaginaActivityProdotto = new Intent(ScegliProdotto.this, ActivityProdotto.class);
+
+    public void startActivityForResultModificaProdotto(Prodotto p) {
+        Intent nuovaPaginaActivityProdotto = new Intent(ScegliProdotto.this, ModificaProdotto.class);
         nuovaPaginaActivityProdotto.putExtra(TAVOLO, tavolo);
+        nuovaPaginaActivityProdotto.putExtra(CAMERIERE, cameriere);
+        nuovaPaginaActivityProdotto.putExtra(START_FROM, ActivityScegliProdotto);
         nuovaPaginaActivityProdotto.putExtra(PRODOTTO, p);
-        startActivityForResult(nuovaPaginaActivityProdotto, REQUEST_ACTIVITY_PRODOTTO);
+        startActivityForResult(nuovaPaginaActivityProdotto, REQUEST_MODIFICA_PRODOTTO_SCEGLI_PRODOTTO);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_ACTIVITY_PRODOTTO && resultCode == RESULT_OK) {
-            tavolo.inserisciProdotto((Prodotto) data.getExtras().getSerializable(PRODOTTO));
-            Snackbar.make(cl,getResources().getText(R.string.prodotto_inserito),Snackbar.LENGTH_SHORT).show();
-        }else{
-            Snackbar.make(cl,getResources().getText(R.string.prodotto_non_inserito),Snackbar.LENGTH_SHORT).show();
-        }
-    }
 }

@@ -27,14 +27,15 @@
             android:layout_height="match_parent"
             android:layout_span="6"
             android:layout_column="0"
-            android:text="@string/numero_tavolo"
             android:id="@+id/textView"
             android:textSize="40sp"
             android:singleLine="true"
             android:gravity="center_vertical"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textAlignment="textEnd"
-            android:maxLength="13" />
+            android:maxLength="13"
+            android:hint="@string/numero_tavolo"
+            android:textColorHint="@android:color/white" />
     </TableRow>
         <TableRow
             android:layout_weight="1"
@@ -48,7 +49,10 @@
                 android:layout_column="0"
                 android:layout_span="6"
                 android:text="@string/lista_tavoli"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/AppTheme.Button"
+                android:onClick="clickElencoTavoli"
+                android:enabled="true" />
         </TableRow>
         <TableRow
             android:layout_weight="1"
@@ -62,7 +66,9 @@
                 android:layout_column="0"
                 android:layout_span="1"
                 android:text="@string/cap"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -72,7 +78,9 @@
                 android:layout_span="1"
                 android:text="@string/b"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -82,7 +90,9 @@
                 android:layout_span="1"
                 android:text="@string/c"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -92,7 +102,9 @@
                 android:layout_span="1"
                 android:text="@string/p"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -102,7 +114,9 @@
                 android:layout_span="1"
                 android:text="@string/t"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -112,7 +126,9 @@
                 android:layout_span="1"
                 android:text="@string/v"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
         </TableRow>
 
         <TableRow
@@ -128,7 +144,9 @@
                 android:layout_span="2"
                 android:text="@string/seven"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -138,7 +156,9 @@
                 android:layout_span="2"
                 android:text="@string/eight"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -148,7 +168,9 @@
                 android:layout_span="2"
                 android:text="@string/nine"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
         </TableRow>
         <TableRow
             android:layout_weight="1"
@@ -163,7 +185,9 @@
                 android:layout_span="2"
                 android:text="@string/four"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -173,7 +197,9 @@
                 android:layout_span="2"
                 android:text="@string/five"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -183,7 +209,9 @@
                 android:layout_span="2"
                 android:text="@string/six"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
         </TableRow>
         <TableRow
             android:layout_weight="1"
@@ -198,7 +226,9 @@
                 android:layout_span="2"
                 android:text="@string/one"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -208,7 +238,9 @@
                 android:layout_span="2"
                 android:text="@string/two"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -218,7 +250,9 @@
                 android:layout_span="2"
                 android:text="@string/three"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
         </TableRow>
         <TableRow
             android:layout_weight="1"
@@ -240,7 +274,9 @@ android:visibility="invisible"
                 android:layout_span="2"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickButton" />
+                android:onClick="clickButton"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
             <Button
                 android:layout_marginBottom="0.5dp"
                 android:layout_width="wrap_content"
@@ -251,7 +287,9 @@ android:visibility="invisible"
                 android:layout_span="2"
                 android:text="@string/canc"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:onClick="clickCancel" />
+                android:onClick="clickCancel"
+                style="@style/AppTheme.Button"
+                android:enabled="true" />
         </TableRow>
     </TableLayout>
 </RelativeLayout>

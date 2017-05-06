@@ -20,6 +20,8 @@ public class InserisciServizi extends AppCompatActivity {
     private Tavolo tavolo;
     private int contatore;
     private TextView schermo;
+    private int contatoreOld;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +32,13 @@ public class InserisciServizi extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.tavolo)+" "+tavolo.getNomeTavolo());
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         schermo=(TextView)findViewById(R.id.schermo);
-        contatore=tavolo.getServizi();
+        contatoreOld=contatore=tavolo.getServizi();
         schermo.setText(String.valueOf(contatore));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tavolo.setServizi(contatore);
+                tavolo.setServiziOld(contatoreOld);
                 startActivityElencoProdotti();
             }
         });
@@ -65,7 +68,8 @@ public class InserisciServizi extends AppCompatActivity {
     }
     public void startActivityElencoProdotti() {
         Intent nuovaPaginaElencoProdotti = new Intent(InserisciServizi.this, ElencoProdotti.class);
-        nuovaPaginaElencoProdotti.putExtra(CAMERIERE,cameriere);
+        //nuovaPaginaElencoProdotti.putExtra(CAMERIERE,cameriere);
+        tavolo.setCameriere(cameriere);
         nuovaPaginaElencoProdotti.putExtra(TAVOLO,tavolo);
         startActivity(nuovaPaginaElencoProdotti);
         finish();
@@ -75,8 +79,8 @@ public class InserisciServizi extends AppCompatActivity {
         schermo.setText(String.valueOf(contatore));
     }
     public void clickMinus(View v){
-        if(contatore==0) {
-            schermo.setText(R.string.schermo);
+        if(contatore==contatoreOld) {
+            schermo.setText(String.valueOf(contatoreOld));
             return;
         }else {
             --contatore;

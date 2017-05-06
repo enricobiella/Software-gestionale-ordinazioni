@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:id="@+id/coordinator_layout_modifica_prodotto"
     tools:context="com.enrico.biella.gestione_ordinazioni.ModificaProdotto">
 
     <android.support.design.widget.AppBarLayout
@@ -32,12 +33,12 @@
         android:src="@drawable/ic_done_white_24dp"
         app:backgroundTint="@color/green"/>
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/cancel"
+        android:id="@+id/modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_clear_white_24dp"
+        android:src="@drawable/ic_mode_edit_white_24dp"
         app:backgroundTint="@color/red" />
 
 </android.support.design.widget.CoordinatorLayout>

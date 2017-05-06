@@ -8,14 +8,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icona_ordinazioni_arancione_192"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
             android:name=".Camerieri"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +27,8 @@
             android:name=".GestioneComande"
             android:label="@string/title_activity_gestione_comande"
             android:parentActivityName=".Camerieri"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.Camerieri" />
@@ -35,16 +37,18 @@
             android:name=".InserisciTavolo"
             android:label="@string/title_activity_inserisci_tavolo"
             android:parentActivityName=".GestioneComande"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.enrico.biella.gestione_ordinazioni.GestioneComande" />
+                android:value="com.enrico.biella.gestione_ordinazioni.Camerieri" />
         </activity>
         <activity
             android:name=".InserisciServizi"
             android:label="@string/title_activity_inserisci_servizi"
             android:parentActivityName=".InserisciTavolo"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.InserisciTavolo" />
@@ -53,7 +57,8 @@
             android:name=".ScegliCategoria"
             android:label="@string/title_activity_scegli_categoria"
             android:parentActivityName=".InserisciServizi"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.ElencoProdotti" />
@@ -62,25 +67,18 @@
             android:name=".ScegliProdotto"
             android:label="@string/title_activity_scegli_prodotto"
             android:parentActivityName=".ScegliCategoria"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.ScegliCategoria" />
         </activity>
         <activity
-            android:name=".ActivityProdotto"
-            android:label="@string/title_activity_activity_prodotto"
-            android:parentActivityName=".ScegliProdotto"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.enrico.biella.gestione_ordinazioni.ScegliProdotto" />
-        </activity>
-        <activity
             android:name=".ElencoProdotti"
             android:label="@string/title_activity_elenco_prodotti"
             android:parentActivityName=".InserisciTavolo"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.InserisciTavolo" />
@@ -89,10 +87,37 @@
             android:name=".ModificaProdotto"
             android:label="@string/title_activity_modifica_prodotto"
             android:parentActivityName=".ElencoProdotti"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.enrico.biella.gestione_ordinazioni.ElencoProdotti" />
+        </activity>
+        <activity
+            android:name=".ElencoModifiche"
+            android:label="@string/title_activity_elenco_modifiche"
+            android:parentActivityName=".ModificaProdotto"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ScegliAggiunta"
+            android:label="@string/title_activity_scegli_aggiunta"
+            android:parentActivityName=".ElencoModifiche"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.ElencoModifiche" />
+        </activity>
+        <activity
+            android:name=".ElencoTavoli"
+            android:label="@string/title_activity_elenco_tavoli"
+            android:parentActivityName=".InserisciTavolo"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.enrico.biella.gestione_ordinazioni.InserisciTavolo" />
         </activity>
     </application>
 

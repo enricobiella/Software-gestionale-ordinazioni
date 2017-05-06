@@ -1,11 +1,11 @@
 package com.enrico.biella.gestione_ordinazioni;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -23,24 +23,20 @@ import Objects.ConnessioneDB;
 
 public class Camerieri extends AppCompatActivity {
 
-    public static String CAMERIERE = "cameriere";
+    private static String CAMERIERE = "cameriere";
     private Cameriere cameriere;
     private ArrayList<Cameriere> elencoCamerieri;
     private SQLiteDatabase mydatabase;
-    private View vecchiaView;
-    private int currentListItemIndex;
     private ArrayAdapter<Cameriere> itemsAdapter;
     private ListView lista;
     private CoordinatorLayout cl;
     public static boolean AGGIORNA = true;
+    private ProgressDialog p;
 
     private void binding() {
-        //buttonBack=(Button)findViewById(R.id.buttonBack);
-        //text = (TextView) findViewById(R.id.text);
         Bundle extras = getIntent().getExtras();
         lista = (ListView) findViewById(R.id.listView);
         cl=(CoordinatorLayout)findViewById(R.id.coordinator_layout);
-        vecchiaView=null;
         cameriere=null;
     }
     @Override
@@ -49,23 +45,6 @@ public class Camerieri extends AppCompatActivity {
         setContentView(R.layout.activity_camerieri);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton falso = (FloatingActionButton) findViewById(R.id.falso);
-        falso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        FloatingActionButton vero = (FloatingActionButton) findViewById(R.id.vero);
-        vero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cameriere!=null) {
-                    startActivityGestioneComande(cameriere);
-                }
-            }
-        });
         getSupportActionBar().setTitle(R.string.title_activity_camerieri);
         //setDatabase();
         binding();
@@ -97,6 +76,17 @@ public class Camerieri extends AppCompatActivity {
         setupListViewListener();
     }
 
+    private void dismissProgressDialog() {
+        if (p != null && p.isShowing()) {
+            p.dismiss();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        dismissProgressDialog();
+        super.onDestroy();
+    }
     private  void downloadDB()
     {
         if(AGGIORNA) {
@@ -113,7 +103,7 @@ public class Camerieri extends AppCompatActivity {
                     downloadDB();
                     return null;
                 }
-            } ,ConnessioneDB.DOWNLOAD);
+            } ,ConnessioneDB.DOWNLOAD_ARCHIVI,p);
             task.execute();
 
         }else {
@@ -125,24 +115,17 @@ public class Camerieri extends AppCompatActivity {
     private void setupListViewListener() {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (vecchiaView != null) {
-                    vecchiaView.setBackgroundColor(getResources().getColor(R.color.trans));
-                }
-                //view.setBackground(getDrawable(R.drawable.button_circle_pressed_other));
-                vecchiaView = view;
-                currentListItemIndex = position;
-                cameriere=elencoCamerieri.get(currentListItemIndex);
-                vecchiaView.setBackgroundColor(getResources().getColor(R.color.select));
-
+                cameriere=elencoCamerieri.get(position);
+                startActivityInserisciTavolo();
             }
         });
     }
 
 
-    public void startActivityGestioneComande(Cameriere c) {
-        Intent nuovaPaginaGestioneComande = new Intent(Camerieri.this, GestioneComande.class);
-        nuovaPaginaGestioneComande.putExtra(CAMERIERE,c);
-        startActivity(nuovaPaginaGestioneComande);
+    public void startActivityInserisciTavolo() {
+        Intent nuovaActivityInserisciTavolo = new Intent(Camerieri.this, InserisciTavolo.class);
+        nuovaActivityInserisciTavolo.putExtra(CAMERIERE,cameriere);
+        startActivity(nuovaActivityInserisciTavolo);
         finish();
     }
 
